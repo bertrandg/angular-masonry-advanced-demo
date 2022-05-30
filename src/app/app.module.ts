@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRouteComponent } from './app.route.component';
 import { PreviewRouteComponent } from './preview/preview.route.component';
+import { PhotoPreviewSmartComponent } from './preview/photo-preview.smart.component';
+import { PhotoPreviewComponent } from './preview/photo-preview.component';
 
 const routes = [
   {
@@ -47,6 +49,8 @@ const routes = [
     AppComponent,
     AppRouteComponent,
     PreviewRouteComponent,
+    PhotoPreviewSmartComponent,
+    PhotoPreviewComponent,
     GallerySmartComponent,
     GalleryComponent,
     PhotoItemSmartComponent,

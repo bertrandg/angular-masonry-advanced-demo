@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { StoreService } from './state.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-route',
   template: `
   <div>
-    <h1 [routerLink]="['preview', 1]">Gallery masonry</h1>
+    <h1>Gallery masonry</h1>
 
     <gallery-smart
       [nbColumns]="3"
@@ -14,16 +13,5 @@ import { StoreService } from './state.service';
     <router-outlet></router-outlet>
   </div>`,
 })
-export class AppRouteComponent implements OnInit {
-
-  constructor(
-    private storeService: StoreService,
-  ) {
-    console.log('dddd')
-  }
-
-  ngOnInit() {
-    // Go load page 1
-    this.storeService.loadNextPage();
-  }
+export class AppRouteComponent {
 }

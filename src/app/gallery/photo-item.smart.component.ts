@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IPhotoAugmented, StoreService } from '../state.service';
 
@@ -16,13 +17,16 @@ export class PhotoItemSmartComponent implements OnInit {
   
   photoDetails$: Observable<IPhotoAugmented>;
 
-  constructor(private storeService: StoreService) {}
+  constructor(
+    private storeService: StoreService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.photoDetails$ = this.storeService.getPhotoDetails(this.id);
   }
 
   open() {
-    console.log('open photo ', this.id)
+    this.router.navigate(['preview', this.id]);
   }
 }

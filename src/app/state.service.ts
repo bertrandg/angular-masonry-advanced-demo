@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
 })
-export class StoreService {
+export class StoreService implements OnInit {
   private currentPage = 0;
   private itemPerPage = 18;
 
@@ -15,6 +15,11 @@ export class StoreService {
   private photosDetails$ = new BehaviorSubject<{[id: string]: IPhotoAugmented}>({});
 
   constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    // Go load page 1
+    this.loadNextPage();
+  }
 
   loadNextPage() {
     if(this.isLoading$.value) {
