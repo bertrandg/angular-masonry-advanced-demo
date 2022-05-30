@@ -18,7 +18,9 @@ export class AppRouteComponent implements OnInit {
 
   constructor(
     private storeService: StoreService,
-  ) {}
+  ) {
+    console.log('dddd')
+  }
 
   ngOnInit() {
     // Go load page 1
