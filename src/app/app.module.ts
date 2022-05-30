@@ -11,6 +11,23 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { PhotoItemSmartComponent } from './gallery/photo-item.smart.component';
 import { PhotoItemComponent } from './gallery/photo-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { AppRouteComponent } from './app.route.component';
+import { PreviewRouteComponent } from './preview/preview.route.component';
+
+const routes = [
+  {
+      path: '',
+      component: AppRouteComponent,
+      children: [
+          {
+              path: 'preview/:image_id',
+              component: PreviewRouteComponent,
+          },
+      ],
+  },
+  { path: '**', redirectTo: '' },
+];
 
 @NgModule({
   imports: [ 
@@ -18,9 +35,18 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule, 
     FormsModule,
     HttpClientModule,
+    RouterModule.forRoot(routes, {
+        enableTracing: false,
+        initialNavigation: 'enabled',
+        scrollPositionRestoration: 'enabled',
+        paramsInheritanceStrategy: 'always',
+        relativeLinkResolution: 'legacy',
+    }),
   ],
   declarations: [ 
-    AppComponent, 
+    AppComponent,
+    AppRouteComponent,
+    PreviewRouteComponent,
     GallerySmartComponent,
     GalleryComponent,
     PhotoItemSmartComponent,

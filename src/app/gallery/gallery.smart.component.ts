@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { StoreService } from '../state.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { StoreService } from '../state.service';
       (loadNextPage)="loadNextPage()"
     ></gallery>`,
 })
-export class GallerySmartComponent implements OnInit {
+export class GallerySmartComponent {
   @Input() nbColumns: number;
   
   isLoading$ = this.storeService.getIsLoading();
@@ -20,11 +20,6 @@ export class GallerySmartComponent implements OnInit {
 
   constructor(private storeService: StoreService) {
     console.log('GallerySmartComponent');
-  }
-
-  ngOnInit() {
-    // Go load page 1
-    this.loadNextPage();
   }
 
   loadNextPage() {
